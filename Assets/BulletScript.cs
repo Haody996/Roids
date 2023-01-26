@@ -37,6 +37,26 @@ public class BulletScript: MonoBehaviour
             // Destroy the Bullet which collided with the Asteroid
             Destroy(gameObject);
         }
+        else if (collider.CompareTag("Alien"))
+        {
+            AlienScript alien = collider.gameObject.GetComponent<AlienScript>();
+            // let the other object handle its own death throes
+            alien.Die();
+            // Destroy the Bullet which collided with the Asteroid
+            Destroy(gameObject);
+        }
+        else if (collider.CompareTag("MovingAlien"))
+        {
+            MovingAlienScript alien = collider.gameObject.GetComponent<MovingAlienScript>();
+            // let the other object handle its own death throes
+            alien.Die();
+            // Destroy the Bullet which collided with the Asteroid
+            Destroy(gameObject);
+        }
+        else if (collider.CompareTag("AlienBullet"))
+        {
+            Destroy(gameObject);
+        }
         else
         {
             // if we collided with something else, print to console

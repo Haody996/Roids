@@ -3,7 +3,9 @@ guid: 70ebc685856f86c4ea8ba6f188c764b0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - alienToSpawn: {fileID: 2724483657939455694, guid: 0d5532975efd77742b7d9aec82844af5, type: 3}
+  - movingAlienToSpawn: {fileID: 7205353900763030646, guid: 0fb497a3e8b995f4d8357d39330a1caf, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
