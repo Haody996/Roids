@@ -22,18 +22,18 @@ public class AlienScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        delta = 0.001f;
+        delta = 0.0005f;
         pointValue = 20;
         direction = 1;
         fireTimer = 0;
         turnTimer = 0;
         downTimer = 0;
         var rand = new Random();
-        firePeriod = rand.Next(5,100);
+        firePeriod = rand.Next(3,25);
         turnPeriod = 7.0f;
         downPeriod = 2 * turnPeriod;
         speed = 0.003f;
-        gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+        // gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
     }
     // Update is called once per frame
     void Update()
@@ -47,31 +47,29 @@ public class AlienScript : MonoBehaviour
             fireTimer = 0;
             UnityEngine.Debug.Log("Alien Fire! ");
             Vector3 spawnPos = gameObject.transform.position;
-            spawnPos.x += 1.5f * Mathf.Cos(90 * Mathf.PI / 180);
-            spawnPos.z -= 1.5f * Mathf.Sin(90 * Mathf.PI / 180);
-
+            spawnPos.y -= 1.5f;
             GameObject obj = Instantiate(alienBullet, spawnPos, Quaternion.identity) as GameObject;
             // get the Bullet Script Component of the new Bullet instance
             AlienBulletScript b = obj.GetComponent<AlienBulletScript>();
             // set the direction the Bullet will travel in
-            Quaternion rot = Quaternion.Euler(new Vector3(0, -90, 0));
+            Quaternion rot = Quaternion.Euler(new Vector3(0, 0, 0));
             b.heading = rot;
         }
 
         if (turnTimer > turnPeriod)
         {
             Vector3 updatedDownPosition = gameObject.transform.position;
-            updatedDownPosition.z -= 2;
+            updatedDownPosition.y -= 2;
             gameObject.transform.position = updatedDownPosition;
             turnTimer = 0;
             direction *= -1;
             delta += 0.001f;
             speed += delta;
-            turnPeriod -= 0.3f;
+            turnPeriod -= 0.5f;
 
         }
 
-        if (gameObject.transform.position.z < 0)
+        if (gameObject.transform.position.y < 0)
         {
             UnityEngine.Application.LoadLevel("EndScene");
         }
@@ -111,7 +109,7 @@ public class AlienScript : MonoBehaviour
 
     public void Turn() {
         Vector3 updatedDownPosition = gameObject.transform.position;
-        updatedDownPosition.z -= 1;
+        updatedDownPosition.y -= 1;
         gameObject.transform.position = updatedDownPosition;
         direction *= -1;
         delta += 0.001f;

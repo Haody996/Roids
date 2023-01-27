@@ -16,19 +16,19 @@ public class Global : MonoBehaviour
 
     void Start()
     {
-        aliensRemaining = 50;
+        aliensRemaining = 40;
         score = 0;
         timer = 0;
         lives = 3;
         spawnPeriod = 15.0f;
         numberSpawnedEachPeriod = 3;
         originInScreenCoords = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
-        for (int z = 10; z < 20; z += 2)
+        for (int y = 10; y < 20; y += 2)
         {
-            for (int x = -10; x < 10; x += 2)
+            for (int x = -8; x < 8; x += 2)
             {
                 Instantiate(alienToSpawn,
-                new Vector3(x, 0, z),
+                new Vector3(x, y, 0),
                 Quaternion.identity);
             }
 
@@ -44,7 +44,7 @@ public class Global : MonoBehaviour
         {
             timer = 0;
             GameObject obj = Instantiate(movingAlienToSpawn,
-                        new Vector3(20, 0, 20),
+                        new Vector3(20, 20, 0),
                         Quaternion.identity
                         ) as GameObject;
             MovingAlienScript a = obj.GetComponent<MovingAlienScript>();
@@ -56,14 +56,18 @@ public class Global : MonoBehaviour
             Application.LoadLevel("EndScene");
         }
 
-        if (aliensRemaining < 1)
+        if (aliensRemaining == 0)
         {
-            aliensRemaining = 50;
-            for (int x = -10; x < 12; x += 2)
+            aliensRemaining = 40;
+            for (int y = 10; y < 20; y += 2)
             {
-                Instantiate(alienToSpawn,
-                new Vector3(x, 0, 12),
-                Quaternion.identity);
+                for (int x = -8; x < 8; x += 2)
+                {
+                    Instantiate(alienToSpawn,
+                    new Vector3(x, y, 0),
+                    Quaternion.identity);
+                }
+
             }
         }
     }

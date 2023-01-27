@@ -11,7 +11,7 @@ public class AlienBulletScript: MonoBehaviour
     {
         // travel straight in the X-axis
         thrust.x = -400.0f;
-        heading = Quaternion.Euler(new Vector3(0, -90, 0));
+        heading = Quaternion.Euler(new Vector3(0, 0, 90));
         // do not passively decelerate
         GetComponent<Rigidbody>().drag = 0;
         // set the direction it will travel in

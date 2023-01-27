@@ -23,13 +23,13 @@ public class Ship : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             Vector3 updatedPosition = gameObject.transform.position;
-            updatedPosition.x += 0.3f;
+            updatedPosition.x -= 0.3f;
             gameObject.transform.position = updatedPosition;
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             Vector3 updatedPosition = gameObject.transform.position;
-            updatedPosition.x -= 0.3f;
+            updatedPosition.x += 0.3f;
             gameObject.transform.position = updatedPosition;
         }
         Vector3 position = gameObject.transform.position;
@@ -67,14 +67,13 @@ public class Ship : MonoBehaviour
             */
             AudioSource.PlayClipAtPoint(bulletSound,gameObject.transform.position);
             Vector3 spawnPos = gameObject.transform.position;
-            spawnPos.x += 1.5f * Mathf.Cos(rotation * Mathf.PI / 180);
-            spawnPos.z -= 1.5f * Mathf.Sin(rotation * Mathf.PI / 180);
+            spawnPos.y += 1.2f;
             // instantiate the Bullet
             GameObject obj = Instantiate(bullet, spawnPos, Quaternion.identity) as GameObject;
             // get the Bullet Script Component of the new Bullet instance
             BulletScript b = obj.GetComponent<BulletScript>();
             // set the direction the Bullet will travel in
-            Quaternion rot = Quaternion.Euler(new Vector3(0, rotation, 0));
+            Quaternion rot = Quaternion.identity;
             b.heading = rot;
         }
     }

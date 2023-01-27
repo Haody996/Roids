@@ -10,7 +10,7 @@ public class BulletScript: MonoBehaviour
     void Start()
     {
         // travel straight in the X-axis
-        thrust.x = 400.0f;
+        thrust.y = 400.0f;
         // do not passively decelerate
         GetComponent<Rigidbody>().drag = 0;
         // set the direction it will travel in
