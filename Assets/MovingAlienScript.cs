@@ -29,8 +29,10 @@ public class MovingAlienScript : MonoBehaviour
 
     public GameObject deathExplosion;
     public AudioClip deathKnell;
+    public GameObject deadAlien;
     public void Die()
     {
+        Instantiate(deadAlien, gameObject.transform.position, Quaternion.identity);
         AudioSource.PlayClipAtPoint(deathKnell,
         gameObject.transform.position);
         Instantiate(deathExplosion, gameObject.transform.position, Quaternion.AngleAxis(-90, Vector3.right));

@@ -7,6 +7,7 @@ MonoImporter:
   - alienBullet: {fileID: 5756952081104156459, guid: 9fd39428ac4999f44a5025034e4b9f2f, type: 3}
   - deathExplosion: {instanceID: 0}
   - deathKnell: {instanceID: 0}
+  - deadAlien: {fileID: 1781871924635932247, guid: b1366903c322f2b47b2e1404a403f5a3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -60,11 +60,9 @@ public class Ship : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Fire! " + rotation);
-            /* we don’t want to spawn a Bullet inside our ship, so some
-            Simple trigonometry is done here to spawn the bullet
-            at the tip of where the ship is pointed.
-            */
+            GameObject global = GameObject.Find("GlobalObject");
+            Global g = global.GetComponent<Global>();
+            g.bulletsRemaining -= 1;
             AudioSource.PlayClipAtPoint(bulletSound,gameObject.transform.position);
             Vector3 spawnPos = gameObject.transform.position;
             spawnPos.y += 1.2f;

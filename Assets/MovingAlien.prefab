@@ -133,6 +133,7 @@ MonoBehaviour:
   direction: 0
   deathExplosion: {fileID: 3844365444794351806, guid: f34c85c4986bba243ba93f2cdc0bea2c, type: 3}
   deathKnell: {fileID: 8300000, guid: 9398fbe7c6fece840acdf9cc29332864, type: 3}
+  deadAlien: {fileID: 7292801578783580856, guid: ce671cf2cf7b56748accadbe77d9c9da, type: 3}
 --- !u!1001 &2158767957728482675
 PrefabInstance:
   m_ObjectHideFlags: 0

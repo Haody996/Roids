@@ -22,7 +22,7 @@ public class AlienScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        delta = 0.0005f;
+        delta = 0.0002f;
         pointValue = 20;
         direction = 1;
         fireTimer = 0;
@@ -45,7 +45,7 @@ public class AlienScript : MonoBehaviour
         if (fireTimer > firePeriod)
         {
             fireTimer = 0;
-            UnityEngine.Debug.Log("Alien Fire! ");
+            // UnityEngine.Debug.Log("Alien Fire! ");
             Vector3 spawnPos = gameObject.transform.position;
             spawnPos.y -= 1.5f;
             GameObject obj = Instantiate(alienBullet, spawnPos, Quaternion.identity) as GameObject;
@@ -82,15 +82,19 @@ public class AlienScript : MonoBehaviour
 
     public GameObject deathExplosion;
     public AudioClip deathKnell;
+    public GameObject deadAlien;
     public void Die()
     {
         AudioSource.PlayClipAtPoint(deathKnell,
         gameObject.transform.position);
         Instantiate(deathExplosion, gameObject.transform.position, Quaternion.AngleAxis(-90, Vector3.right));
+        Instantiate(deadAlien, gameObject.transform.position, Quaternion.identity);
         GameObject obj = GameObject.Find("GlobalObject");
         Global g = obj.GetComponent<Global>();
         g.score += pointValue;
         g.aliensRemaining -= 1;
+        g.deadAlienCount += 1;
+        UnityEngine.Debug.Log(g.aliensRemaining);
         Destroy(gameObject);
     }
 
@@ -124,6 +128,11 @@ public class AlienScript : MonoBehaviour
             Ship player = collider.gameObject.GetComponent<Ship>();
             player.LoseALife();
             // Destroy the Bullet which collided with the Asteroid
+            GameObject obj = GameObject.Find("GlobalObject");
+            Global g = obj.GetComponent<Global>();
+            g.score += pointValue;
+            g.aliensRemaining -= 1;
+            UnityEngine.Debug.Log(g.aliensRemaining);
             Destroy(gameObject);
         }
         else if (collider.CompareTag("Asteroid"))
@@ -132,6 +141,11 @@ public class AlienScript : MonoBehaviour
             // let the other object handle its own death throes
             roid.Die();
             // Destroy the Bullet which collided with the Asteroid
+            GameObject obj = GameObject.Find("GlobalObject");
+            Global g = obj.GetComponent<Global>();
+            g.score += pointValue;
+            g.aliensRemaining -= 1;
+            UnityEngine.Debug.Log(g.aliensRemaining);
             Destroy(gameObject);
         }
         else if (collider.CompareTag("Bullet"))
