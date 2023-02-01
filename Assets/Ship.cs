@@ -58,10 +58,10 @@ public class Ship : MonoBehaviour
     public AudioClip bulletSound;
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        GameObject global = GameObject.Find("GlobalObject");
+        Global g = global.GetComponent<Global>();
+        if (Input.GetButtonDown("Fire1") && g.bulletsRemaining>0)
         {
-            GameObject global = GameObject.Find("GlobalObject");
-            Global g = global.GetComponent<Global>();
             g.bulletsRemaining -= 1;
             AudioSource.PlayClipAtPoint(bulletSound,gameObject.transform.position);
             Vector3 spawnPos = gameObject.transform.position;

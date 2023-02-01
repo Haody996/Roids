@@ -22,7 +22,7 @@ public class AlienScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        delta = 0.0002f;
+        delta = 0.00002f;
         pointValue = 20;
         direction = 1;
         fireTimer = 0;
@@ -54,6 +54,13 @@ public class AlienScript : MonoBehaviour
             // set the direction the Bullet will travel in
             Quaternion rot = Quaternion.Euler(new Vector3(0, 0, 0));
             b.heading = rot;
+        }
+
+        if (gameObject.transform.position.x > 20 || gameObject.transform.position.x < -20)
+        {
+            GameObject obj = GameObject.Find("GlobalObject");
+            Global g = obj.GetComponent<Global>();
+            g.turn = true;
         }
 
         if (turnTimer > turnPeriod)

@@ -8,10 +8,12 @@ public class MovingAlienScript : MonoBehaviour
     public int pointValue;
     public float speed;
     public int direction;
+    // public AudioClip ufo;
     void Start()
     {
         pointValue = 300;
-        speed = 0.007f;
+        speed = 0.02f;
+        // AudioSource.PlayClipAtPoint(ufo, gameObject.transform.position);
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class MovingAlienScript : MonoBehaviour
         updatedPosition.x += direction * speed;
         gameObject.transform.position = updatedPosition;
 
-        if (gameObject.transform.position.x > 20 || gameObject.transform.position.x < -20)
+        if (gameObject.transform.position.x > 30 || gameObject.transform.position.x < -30)
         {
             Destroy(gameObject);
         }
@@ -33,12 +35,13 @@ public class MovingAlienScript : MonoBehaviour
     public void Die()
     {
         Instantiate(deadAlien, gameObject.transform.position, Quaternion.identity);
-        AudioSource.PlayClipAtPoint(deathKnell,
-        gameObject.transform.position);
+        
+        AudioSource.PlayClipAtPoint(deathKnell,gameObject.transform.position);
         Instantiate(deathExplosion, gameObject.transform.position, Quaternion.AngleAxis(-90, Vector3.right));
         GameObject obj = GameObject.Find("GlobalObject");
         Global g = obj.GetComponent<Global>();
         g.score += pointValue;
+        GetComponent<AudioSource>().Stop();
         Destroy(gameObject);
     }
 

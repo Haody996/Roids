@@ -26,6 +26,10 @@ public class AlienBulletScript: MonoBehaviour
     // Update is called once per frame
     void Update()
     { //Physics engine handles movement, empty for now.
+        if (gameObject.transform.position.y < -20)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision collision)

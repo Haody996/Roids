@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class BulletScript: MonoBehaviour
@@ -22,6 +23,10 @@ public class BulletScript: MonoBehaviour
     // Update is called once per frame
     void Update()
     { //Physics engine handles movement, empty for now.
+        if (gameObject.transform.position.y > 50)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -47,9 +52,10 @@ public class BulletScript: MonoBehaviour
         }
         else if (collider.CompareTag("MovingAlien"))
         {
-            MovingAlienScript alien = collider.gameObject.GetComponent<MovingAlienScript>();
+            // UnityEngine.Debug.Log("Collided with " + collider.tag);
+            MovingAlienScript a = collider.gameObject.GetComponent<MovingAlienScript>();
             // let the other object handle its own death throes
-            alien.Die();
+            a.Die();
             // Destroy the Bullet which collided with the Asteroid
             Destroy(gameObject);
         }
@@ -61,7 +67,7 @@ public class BulletScript: MonoBehaviour
         {
             // if we collided with something else, print to console
             // what the other thing was
-            Debug.Log("Collided with " + collider.tag);
+            // Debug.Log("Collided with " + collider.tag);
         }
     }
 }

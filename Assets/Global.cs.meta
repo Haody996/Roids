@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - alienToSpawn: {fileID: 2724483657939455694, guid: 0d5532975efd77742b7d9aec82844af5, type: 3}
   - movingAlienToSpawn: {fileID: 7205353900763030646, guid: 0fb497a3e8b995f4d8357d39330a1caf, type: 3}
+  - levelup: {fileID: 8300000, guid: fb1d68878549b294ca767f1f7a00e4e4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

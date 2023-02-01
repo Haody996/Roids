@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+
 public class EndScript : MonoBehaviour
 {
     private GUIStyle buttonStyle;
@@ -12,21 +14,13 @@ public class EndScript : MonoBehaviour
     void Update()
     {
     }
-    void OnGUI()
+
+    public void Restart()
     {
-        GUILayout.BeginArea(new Rect(10, Screen.height / 2 + 100,
-        Screen.width - 10, 200));
-        // Load the main scene
-        // The scene needs to be added into build setting to be loaded!
-        if (GUILayout.Button("Restart Game"))
-        {
-            Application.LoadLevel("GameplayScene");
-        }
-        if (GUILayout.Button("Exit"))
-        {
-            Application.Quit();
-            Debug.Log("Application.Quit() only works in build,not in editor");
-        }
-        GUILayout.EndArea();
+        Application.LoadLevel("GameplayScene");
+    }
+
+    public void Exit() {
+        Application.Quit();
     }
 }
