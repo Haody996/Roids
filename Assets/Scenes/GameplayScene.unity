@@ -900,13 +900,12 @@ MonoBehaviour:
   levelup: {fileID: 8300000, guid: fb1d68878549b294ca767f1f7a00e4e4, type: 3}
   timer: 0
   spawnPeriod: 0
-  numberSpawnedEachPeriod: 0
-  originInScreenCoords: {x: 0, y: 0, z: 0}
   score: 0
   lives: 0
   aliensRemaining: 0
   bulletsRemaining: 0
   deadAlienCount: 0
+  turn: 0
 --- !u!4 &445782760
 Transform:
   m_ObjectHideFlags: 0
@@ -1274,6 +1273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 0
   rotation: 0
+  speed: 0
   bullet: {fileID: 5756952081104156459, guid: 482c2aa58d2b02a44b2da429cbbc2b27, type: 3}
   bulletSound: {fileID: 8300000, guid: 25ecf9a7454159c48aa6665a2bbf99c4, type: 3}
 --- !u!54 &631148091
@@ -2009,6 +2009,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2083,6 +2084,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ef66f310326ef4a8f65f9a0382ec9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
+  shakeDuration: 0
+  shakeAmount: 0.7
+  decreaseFactor: 1
+  shaketrue: 0
 --- !u!1001 &1035064759
 PrefabInstance:
   m_ObjectHideFlags: 0

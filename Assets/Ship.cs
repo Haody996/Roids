@@ -7,12 +7,15 @@ public class Ship : MonoBehaviour
     // public Vector3 forceVector;
     public float rotationSpeed;
     public float rotation;
+    public float speed;
+    // public CameraShake cameraShake;
     // Use this for initialization
     void Start()
     {
         // Vector3 default initializes all components to 0.0f
         // forceVector.x = 1.0f;
         rotation = -90;
+        speed = 0.4f;
     }
     /* forced changes to rigid body physics parameters should be done through the FixedUpdate()
     method, not the Update() method
@@ -23,13 +26,13 @@ public class Ship : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             Vector3 updatedPosition = gameObject.transform.position;
-            updatedPosition.x -= 0.3f;
+            updatedPosition.x -= speed;
             gameObject.transform.position = updatedPosition;
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             Vector3 updatedPosition = gameObject.transform.position;
-            updatedPosition.x += 0.3f;
+            updatedPosition.x += speed;
             gameObject.transform.position = updatedPosition;
         }
         Vector3 position = gameObject.transform.position;
@@ -74,10 +77,16 @@ public class Ship : MonoBehaviour
             Quaternion rot = Quaternion.identity;
             b.heading = rot;
         }
+        speed = (0.5f + (1.0f / 80.0f) * g.aliensRemaining)*0.4f;
+
     }
 
     public void LoseALife()
     {
+        //GameObject cam = GameObject.Find("Main Camera");
+        //CameraShake camshake = cam.GetComponent<CameraShake>();
+        //camshake.Shake();
+        //camshake.Shake();
         GameObject obj = GameObject.Find("GlobalObject");
         Global g = obj.GetComponent<Global>();
         g.lives -= 1;

@@ -129,3 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: {x: 0, y: 0, z: 0}
   heading: {x: 0, y: 0, z: 0, w: 0}
+  deadBullet: {fileID: 5756952081104156459, guid: e4d2d791ba5470e47a036dcff1f45d32, type: 3}

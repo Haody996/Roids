@@ -8,6 +8,7 @@ public class BulletScript: MonoBehaviour
     public Vector3 thrust;
     public Quaternion heading;
     // Use this for initialization
+    public GameObject deadBullet;
     void Start()
     {
         // travel straight in the X-axis
@@ -23,9 +24,10 @@ public class BulletScript: MonoBehaviour
     // Update is called once per frame
     void Update()
     { //Physics engine handles movement, empty for now.
-        if (gameObject.transform.position.y > 50)
+        if (gameObject.transform.position.y > 30)
         {
             Destroy(gameObject);
+            Instantiate(deadBullet,new Vector3(20, 30, 0),Quaternion.identity);
         }
     }
 
