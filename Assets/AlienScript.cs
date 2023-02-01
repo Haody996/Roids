@@ -76,8 +76,11 @@ public class AlienScript : MonoBehaviour
 
         }
 
-        if (gameObject.transform.position.y < 0)
+        if (gameObject.transform.position.y < 2)
         {
+            GameObject obj = GameObject.Find("GlobalObject");
+            Global g = obj.GetComponent<Global>();
+            Global.finalScore = g.score;
             UnityEngine.Application.LoadLevel("EndScene");
         }
 
